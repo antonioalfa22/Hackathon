@@ -1,0 +1,187 @@
+<!doctype html>
+<html>
+<head>
+  <!-- METADATOS -->
+  <meta charset=utf-8>
+  <meta name="author" content="Valar Programming">
+	<meta name="description" content="Aplicación para tocar la batería">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>Batería con Kinect</title>
+<style>
+ 
+img
+{
+position:absolute;
+left:20%;
+top:40px;
+margin:auto;
+z-index:-11;
+}
+ 
+.imgBombo
+{
+position:absolute;
+left:20%;
+top:38px;
+margin:auto;
+z-index:-2;
+}
+
+.imgCaja
+{
+position:absolute;
+left:20%;
+top:38px;
+z-index:-3;
+}
+.imgHitHat
+{
+position:absolute;
+left:20%;
+top:38px;
+z-index:-4;
+}
+.imgHits
+{
+position:absolute;
+left:20%;
+top:38px;
+z-index:-5;
+}
+.imgPlatillos
+{
+position:absolute;
+left:20%;
+top:38px;
+z-index:-6;
+}
+.imgTom
+{
+position:absolute;
+left:20%;
+top:40px;
+z-index:-7;
+}
+</style>
+</head>
+ 
+<body>
+ 
+<img src="https://raw.githubusercontent.com/antonioalfa22/Hackathon/master/img/Bateria.jpeg" width="600" height="600"  />
+<img id="Bombo" src="https://raw.githubusercontent.com/antonioalfa22/Hackathon/master/img/Bombo.png" width="600" height="600" class="imgBombo"/>
+<img id="Caja" src="https://raw.githubusercontent.com/antonioalfa22/Hackathon/master/img/Caja.png" width="600" height="600" class="imgCaja"/>
+<img id="HitHat" src="https://raw.githubusercontent.com/antonioalfa22/Hackathon/master/img/HitHat.png" width="600" height="600" class="imgHitHat"/>
+<img id="Hits" src="https://raw.githubusercontent.com/antonioalfa22/Hackathon/master/img/Hits.png" width="600" height="600" class="imgHits"/>
+<img id="Platillos" src="https://raw.githubusercontent.com/antonioalfa22/Hackathon/master/img/Platillos.png" width="600" height="600" class="imgPlatillos"/>
+<img id="Tom" src="https://raw.githubusercontent.com/antonioalfa22/Hackathon/master/img/Tom.png" width="600" height="600" class="imgTom"/>
+<button onclick="bateria.tocarBombo()">Tocar Bombo</button>
+<button onclick="bateria.tocarCaja()">Tocar Caja</button>
+<button onclick="bateria.tocarHitHat()">Tocar HitHat</button>
+<button onclick="bateria.tocarHits()">Tocar Hits</button>
+<button onclick="bateria.tocarPlatillos()">Tocar Platillos</button>
+<button onclick="bateria.tocarTom()">Tocar Tom</button>
+
+<audio id="Kick" src="/sounds/Kick.wav" type="audio/wav"></audio>
+
+ <script>
+		
+ 	document.getElementById("Bombo").style.visibility = 'hidden';
+ 	document.getElementById("Caja").style.visibility = 'hidden';
+ 	document.getElementById("HitHat").style.visibility = 'hidden';
+ 	document.getElementById("Hits").style.visibility = 'hidden';
+ 	document.getElementById("Platillos").style.visibility = 'hidden';
+ 	document.getElementById("Tom").style.visibility = 'hidden';
+
+ 	setInterval(limpiarImagenes,800);
+ 	function limpiarImagenes() {
+ 		document.getElementById("Bombo").style.visibility = 'hidden';
+ 		document.getElementById("Caja").style.visibility = 'hidden';
+ 		document.getElementById("HitHat").style.visibility = 'hidden';
+ 		document.getElementById("Hits").style.visibility = 'hidden';
+ 		document.getElementById("Platillos").style.visibility = 'hidden';
+ 		document.getElementById("Tom").style.visibility = 'hidden';
+ 	}
+
+ 	"use strict";
+	class Bateria {
+	    constructor () {
+	    	this.bombo = new Audio('https://github.com/antonioalfa22/Hackathon/blob/master/sounds/bombo.wav?raw=true');
+	    	this.caja = new Audio('https://github.com/antonioalfa22/Hackathon/blob/master/sounds/caja.wav?raw=true');
+	    	this.hithat = new Audio('https://github.com/antonioalfa22/Hackathon/blob/master/sounds/hithat.wav?raw=true');
+	    	this.hits = new Audio('https://github.com/antonioalfa22/Hackathon/blob/master/sounds/hits.wav?raw=true');
+	    	this.platillo = new Audio('https://github.com/antonioalfa22/Hackathon/blob/master/sounds/platillo.wav?raw=true');
+	    	this.tom = new Audio('https://github.com/antonioalfa22/Hackathon/blob/master/sounds/tom.wav?raw=true');
+	    }
+	    leer(args){
+	        var long = args.length;
+	        for(var i=0; i< long; i++){
+	            if(args[i]){
+	                pintar(this.getItem(args,i));
+	            }
+	        }
+	    }
+
+	    tocarBombo() {
+	 		document.getElementById("Bombo").style.visibility = 'visible';	
+	 		this.bombo.currentTime=0;
+	 		this.bombo.play();
+ 		}
+	 	tocarCaja() {
+	 		document.getElementById("Caja").style.visibility = 'visible';	
+	 		this.caja.currentTime=0;
+	 		this.caja.play();
+	 	}
+	 	tocarHitHat() {
+	 		document.getElementById("HitHat").style.visibility = 'visible';
+	 		this.hithat.currentTime=0;
+	 		this.hithat.play();
+	 	}
+	 	tocarHits() {
+	 		document.getElementById("Hits").style.visibility = 'visible';
+	 		this.hits.currentTime=0;
+	 		this.hits.play();
+	 	}
+	 	tocarPlatillos() {
+	 		document.getElementById("Platillos").style.visibility = 'visible';
+	 		this.platillo.currentTime=0;
+	 		this.platillo.play();
+	 	}
+	 	tocarTom() {
+	 		document.getElementById("Tom").style.visibility = 'visible';
+	 		this.tom.currentTime=0;
+	 		this.tom.play();
+	 	}
+
+	    getItem(pos){
+	        // Caja
+	        if(i==0){
+	            this.tocarCaja();
+	        }
+	        // HitHat
+	        else if(i==1){
+	            this.tocarHithat();
+	        }
+	        // Hits
+	        else if(i==2){
+	            this.tocarHits();
+	        }
+	        // Platillo
+	        else if(i==3){
+	            this.tocarPlatillos();
+	        }
+	        // Tom
+	        else if(i==4){
+	            this.tocarTom();
+	        }
+	        // Bombo
+	        else if(i==5){
+	            this.tocarBombo();
+	        }
+	    }
+	}
+	var bateria = new Bateria();
+ </script>
+ 
+</body>
+</html>
