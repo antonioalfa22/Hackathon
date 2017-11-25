@@ -10,7 +10,7 @@ El proyecto es una plantilla que lee unos json que son el resultado de grabar un
 
 
 ## Pasos a seguir
-1.   Copiar la ![Plantilla txt](https://raw.githubusercontent.com/vicboma1/StarterKitBluemixHands/master/assets/_starterKitBluemixHands.txt) con "Control A" + "Control C"
+1.   Copiar la ![Plantilla txt](https://raw.githubusercontent.com/antonioalfa22/Hackathon/master/Plantilla.txt) con "Control A" + "Control C"
 
 2.   Ir al menú contextual de nuestra aplicación Node-RED
 
